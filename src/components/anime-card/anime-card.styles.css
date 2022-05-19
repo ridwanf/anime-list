@@ -61,6 +61,10 @@
   background-color: #052d4a;
   margin: 20px 0;
 }
+.detail-info {
+  border: solid .5px;
+  border-radius: 1px;
+}
 .flex-row .info-field span{
   margin-right: 10px;
 }

@@ -1,3 +1,5 @@
+import Banner from "../../components/banner/banner.component";
+import InfoField from "../../components/info-field/info-field.component";
 import "./anime-detail.styles.css";
 const AnimeDetail = () => {
   const data = {
@@ -44,22 +46,20 @@ const AnimeDetail = () => {
   };
   const rate = (score) => {
     const result = Math.floor(score / 20);
-    const star=[];
+    const star = [];
     for (let index = 0; index < result; index++) {
-      star.push(<span className="star" key={index}>	&#9734;</span>);
+      star.push(
+        <span className="star" key={index}>
+          {" "}
+          &#9734;
+        </span>
+      );
     }
-    return star
+    return star;
   };
   return (
     <div className="anime-detail-container">
-      <div className="anime-detail-header-wrap">
-        <div
-          className="anime-detail-banner"
-          style={{ backgroundImage: `url(${data.Media.bannerImage})` }}
-        >
-          <div className="shadow"></div>
-        </div>
-      </div>
+      <Banner urlImage={data.Media.bannerImage} />
       <div className="anime-detail-wrapper">
         <div className="anime-detail-image anime-detail">
           <img src={data.Media.coverImage.large} alt="detail-img" />
@@ -69,42 +69,21 @@ const AnimeDetail = () => {
           <p>{data.Media.description}</p>
           <div className="detail-info">
             <div className="flex-row">
-              <div className="info-field">
-                <span>Status: </span>
-                <span>{data.Media.status}</span>
-              </div>
-              <div className="info-field">
-                <span>Start Date: </span>
-                <span>{formatDate(data.Media.startDate)}</span>
-              </div>
-              <div className="info-field">
-                <span>End Date: </span>
-                <span>{formatDate(data.Media.endDate)}</span>
-              </div>
-              <div className="info-field">
-                <span>Episode: </span>
-                <span>{data.Media.episodes}</span>
-              </div>
-              <div className="info-field">
-                <span>Genres: </span>
-                <span>{data.Media.genres.join(", ")}</span>
-              </div>
-              <div className="info-field">
-                <span>Duration: </span>
-                <span>{data.Media.duration} minute</span>
-              </div>
-              <div className="info-field">
-                <span>Is Adult: </span>
-                <span>{data.Media.isAdult}</span>
-              </div>
-              <div className="info-field">
-                <span>Average Score: </span>
-                {rate(data.Media.averageScore)}
-              </div>
-              <div className="info-field">
-                <span>Popularity: </span>
-                <span>{data.Media.popularity}</span>
-              </div>
+              <InfoField label="Status" value={data.Media.status} />
+              <InfoField
+                label="Start Date"
+                value={formatDate(data.Media.startDate)}
+              />
+              <InfoField
+                label="End Date"
+                value={formatDate(data.Media.endDate)}
+              />
+              <InfoField label="Episode" value={data.Media.episodes} />
+              <InfoField label="Genres" value={data.Media.genres.join(", ")} />
+              <InfoField label="Duration" value={data.Media.duration} />
+              <InfoField label="Is Adult" value={data.Media.isAdult} />
+              <InfoField label="Average Score" value={rate(data.Media.averageScore)} />
+              <InfoField label="Popularity" value={data.Media.popularity} />
             </div>
           </div>
         </div>

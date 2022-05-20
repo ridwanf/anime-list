@@ -44,10 +44,9 @@ const AnimeDetail = () => {
   };
   const rate = (score) => {
     const result = Math.floor(score / 20);
-    console.log(result);
     const star=[];
     for (let index = 0; index < result; index++) {
-      star.push(<span className="star">	&#9734;</span>);
+      star.push(<span className="star" key={index}>	&#9734;</span>);
     }
     return star
   };

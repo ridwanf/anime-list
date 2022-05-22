@@ -1,5 +1,8 @@
 .anime-detail-wrapper .anime-detail{
-  margin-right: 20px;;
+  margin-right: 20px;
+}
+.anime-detail h2{
+  margin-top: 0;
 }
 
 .anime-detail-wrapper {

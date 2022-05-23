@@ -1,23 +1,17 @@
+import { useContext } from "react";
 import Banner from "../banner/banner.component";
 import InfoField from "../info-field/info-field.component";
 import "./anime-detail.styles.css";
+import { ModalContext } from "../../contexts/modal.context";
+import ModalAddItem from "../modal-add-item/modal-add-item.component";
+import Rate from "../rate/rate.component";
 
 const AnimeDetail = ({ detail, loading }) => {
+  const { isModalOpen, setIsModalOpen } = useContext(ModalContext);
+
+  const setShowModal = (isOpen) => setIsModalOpen(isOpen);
   const formatDate = (date) => {
     return `${date.day}-${date.month}-${date.year}`;
-  };
-  const rate = (score) => {
-    const result = Math.floor(score / 20);
-    const star = [];
-    for (let index = 0; index < result; index++) {
-      star.push(
-        <span className="star" key={index}>
-          {" "}
-          &#9734;
-        </span>
-      );
-    }
-    return star;
   };
   if (Object.entries(detail).length > 0 && loading === false) {
     return (
@@ -45,15 +39,19 @@ const AnimeDetail = ({ detail, loading }) => {
                 <InfoField label="Genres" value={detail.genres.join(", ")} />
                 <InfoField label="Duration" value={detail.duration} />
                 <InfoField label="Is Adult" value={detail.isAdult} />
-                <InfoField
-                  label="Average Score"
-                  value={rate(detail.averageScore)}
-                />
+                <Rate score={detail.averageScore} />
                 <InfoField label="Popularity" value={detail.popularity} />
               </div>
             </div>
+            <div className="detail-footer">
+              <button className="btn" onClick={() => setShowModal(true)}>
+                {" "}
+                Add To Collection
+              </button>
+            </div>
           </div>
         </div>
+        <ModalAddItem show={isModalOpen} onClose={() => setShowModal(false)} anime={detail}/>
       </div>
     );
   }

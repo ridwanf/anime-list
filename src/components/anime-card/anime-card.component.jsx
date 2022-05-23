@@ -2,12 +2,12 @@ import "./anime-card.styles.css";
 
 import { useNavigate } from "react-router-dom";
 
-const AnimeCard = ({ card }) => {
+const AnimeCard = ({ card, url}) => {
   const navigate = useNavigate();
 
   const { id, coverImage, title } = card;
   const onNavigationHandler = () => {
-    navigate(`/${id}`);
+    navigate(`${url}`);
   };
   return (
     <div className="anime-container" key={id} onClick={onNavigationHandler}>

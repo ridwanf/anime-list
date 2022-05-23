@@ -5,7 +5,7 @@ const AnimeList = ({animeList}) => {
   return (
     <div className="anime-list-container">
       {animeList.map((card ) => {
-        return <AnimeCard card={card} key={card.id}/>
+        return <AnimeCard card={card} key={card.id} url={`/${card.id}`}/>
       })}
     </div>
   );

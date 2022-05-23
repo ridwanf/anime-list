@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { CollectionProvider } from "./contexts/collection.context";
+import { ModalPorvider } from "./contexts/modal.context";
 
 const client = new ApolloClient({
   uri: "https://graphql.anilist.co",
@@ -16,7 +18,11 @@ root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <BrowserRouter>
-        <App />
+        <CollectionProvider>
+          <ModalPorvider>
+            <App />
+          </ModalPorvider>
+        </CollectionProvider>
       </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>

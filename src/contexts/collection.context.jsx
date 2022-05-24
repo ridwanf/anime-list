@@ -22,14 +22,47 @@ const addCollectionItem = (collections, collectionName, anime) => {
           : [anime],
       };
     } else {
-      return collection
+      return collection;
+    }
+  });
+};
+
+const removeCollection = (collections, collectionToRemove) => {
+  console.log(collectionToRemove)
+  const a = collections.filter(
+    (collection) => collection.name !== collectionToRemove
+  );
+  return a;
+};
+
+const removeItem = (collections, collectionName, itemToRemove) => {
+  return collections.map((col) => {
+    if (col.name === collectionName.name) {
+      return {
+        ...col,
+        animeList: col.animeList.filter((item) => item.id !== itemToRemove.id),
+      };
+    } else {
+      return col;
+    }
+  });
+};
+
+const editCollectionName = (collections, collectionName, newName) => {
+  return collections.map((col) => {
+    if (col.name === collectionName.name) {
+      return {
+        ...col,
+        name: newName,
+      };
+    } else {
+      return col;
     }
   });
 };
 
 const checkIsExist = (collections, collectionName) => {
   const isExist = collections.find((item) => item.name === collectionName.name);
-  console.log(isExist);
   return isExist;
 };
 const initialCollection = localStorage.getItem("COLLECTION")
@@ -42,7 +75,7 @@ export const CollectionContext = createContext({
 
 export const CollectionProvider = ({ children }) => {
   const [collections, setCollections] = useState(initialCollection);
-  const [collectionDetail, setCollectionDetail] = useState({})
+  const [collectionDetail, setCollectionDetail] = useState({});
 
   const [isError, setIsError] = useState({});
   useEffect(() => {
@@ -55,7 +88,6 @@ export const CollectionProvider = ({ children }) => {
       setIsError({ error: true, message: "Already added" });
     } else {
       setCollections(addCollection(collections, collectionName));
-      saveCollection();
     }
   };
   const addItemToCollectionItem = (collectionName, anime) => {
@@ -64,6 +96,17 @@ export const CollectionProvider = ({ children }) => {
   const getCollectionDetail = (collectionName) => {
     setCollectionDetail(checkIsExist(collections, collectionName));
   };
+  const removeCollectionFromList = (collectionToRemove) => {
+    console.log(collectionToRemove);
+    setCollections(removeCollection(collections, collectionToRemove));
+  };
+
+  const removeAnimeFromCollection = (collection, itemToRemove) => {
+    setCollections(removeItem(collections, collection, itemToRemove));
+  };
+  const updateCollectionName = (collection, newName) => {
+    setCollections(editCollectionName(collections, collection, newName));
+  };
   const value = {
     collections,
     setCollections,
@@ -71,7 +114,10 @@ export const CollectionProvider = ({ children }) => {
     isError,
     addItemToCollectionItem,
     getCollectionDetail,
-    collectionDetail
+    collectionDetail,
+    removeCollectionFromList,
+    removeAnimeFromCollection,
+    updateCollectionName,
   };
   return (
     <CollectionContext.Provider value={value}>

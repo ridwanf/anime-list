@@ -1,46 +1,52 @@
-import React, { useContext } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { CollectionContext } from '../../contexts/collection.context'
 import { ModalContext } from '../../contexts/modal.context'
+import Btn from '../Btn/button.component'
 import ModalCollection from '../modal-add-collection/modal-add-collection.component'
-import './modal-add-item.styles.css'
+import Modal from '../modal/modal.component'
+import './modal-add-item.styles.jsx'
+import { ModalBody, ModalCollectionItem, ModalTitle } from './modal-add-item.styles.jsx'
 
-const ModalAddItem = ({show, onClose, anime}) => {
+const ModalAddItem = ({show, anime}) => {
   const {collections, addItemToCollectionItem} = useContext(CollectionContext)
-  const {setIsModalCollectionOpen, isModalCollectionOpen} = useContext(ModalContext)
+  const {setIsModalOpen, isModalOpen, isModalCollectionOpen, setIsModalCollectionOpen} = useContext(ModalContext)
   const setModalCollectionOpen = (isOpen) => setIsModalCollectionOpen(isOpen);
   const addNewCollection = () => {
     setIsModalCollectionOpen(true)
   },
   addToCollectionItem = (name, anime) => {
     addItemToCollectionItem(name, anime)
+    setIsModalOpen(false)
   }
   if (!show) {
     return null
   } else {
     return (
-      <div className="modal" onClick={onClose}>
-        <div className="modal-content" onClick={e => e.stopPropagation()}>
-          <h4 className="modal-title">
+      <Fragment>
+
+      <Modal onClose={() => setIsModalOpen(false)} show={isModalOpen}>
+          <ModalTitle>
             Add To Collection
-          </h4>
-          <div className="modal-body">
+          </ModalTitle>
+          <ModalBody>
             {collections &&
               collections.map((collection, index) => (
-                <div key={index} onClick={() => addToCollectionItem(collection.name, anime)}>
+                <ModalCollectionItem key={index} onClick={() => addToCollectionItem(collection.name, anime)}>
                   {collection.name}
-                </div>
+                </ModalCollectionItem>
               ))
             }
-          </div>
+          </ModalBody>
           <div className="modal-footer">
-           <span onClick={addNewCollection}> + Create New Collection </span> 
+           <Btn onClick={addNewCollection}> Create New Collection </Btn> 
           </div>
-        </div>
         <ModalCollection
           show={isModalCollectionOpen}
           onClose={() => setModalCollectionOpen(false)}
         />
-      </div>
+      </Modal>
+      </Fragment>
+
     )
   }
   

@@ -1,23 +1,27 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Banner from "../../components/banner/banner.component";
+import Btn from "../../components/Btn/button.component";
 import InfoField from "../../components/info-field/info-field.component";
 import Rate from "../../components/rate/rate.component";
 import { CollectionContext } from "../../contexts/collection.context";
-import "./collection-detail.styles.css";
+import "./collection-detail.styles.jsx";
+import { CollectionDetailContainer, CollectionDetailWrapper, CollectionDetailImage } from "./collection-detail.styles.jsx";
 const CollectionDetail = () => {
   const { name } = useParams();
-  console.log(name);
 
-  const { getCollectionDetail, collectionDetail } =
+  const { getCollectionDetail, collectionDetail, removeAnimeFromCollection } =
     useContext(CollectionContext);
+
+  const deleteItem = (collectionDetail, itemToRemove) => {
+    removeAnimeFromCollection(collectionDetail, itemToRemove)
+  }
   useEffect(() => {
     getCollectionDetail({ name: name });
   });
-  console.log(collectionDetail);
 
   return (
-    <div className="collection-detail-container">
+    <CollectionDetailContainer>
       <Banner
         urlImage={
           collectionDetail.animeList && collectionDetail.animeList[0]
@@ -27,25 +31,25 @@ const CollectionDetail = () => {
       />
       {collectionDetail.animeList &&
         collectionDetail.animeList.map((detail) => (
-          <div className="collection-detail-wrapper">
-            <div className="collection-detail-image">
+          <CollectionDetailWrapper key={detail.id}>
+            <CollectionDetailImage>
               <img src={detail.coverImage.large} alt="detail-img" />
-            </div>
-            <div className="collection-detail-description collection-detail">
+            </CollectionDetailImage>
+            <CollectionDetail>
               <span>{detail.title.romaji}</span>
-            </div>
-            <div className="collection-detail">
+            </CollectionDetail>
+            <CollectionDetail>
               <Rate score={detail.averageScore} />
-            </div>
+            </CollectionDetail>
 
             <InfoField label="Episode" value={detail.episodes}  className="collection-detail"/>
             <InfoField label="Genres" value={detail.genres.join(", ")} className="collection-detail"/>
             <div className="collection-detail">
-              <button className="">X</button>
+              <Btn onClick={ () => deleteItem(collectionDetail, detail)}>Delete</Btn>
             </div>
-          </div>
+          </CollectionDetailWrapper>
         ))}
-    </div>
+    </CollectionDetailContainer>
   );
 };
 

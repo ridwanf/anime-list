@@ -1,4 +1,4 @@
-import "./anime-card.styles.css";
+import {AnimeBodyContainer, AnimeContainer, BackgroundImage} from "./anime-card.styles.jsx";
 
 import { useNavigate } from "react-router-dom";
 
@@ -10,15 +10,14 @@ const AnimeCard = ({ card, url}) => {
     navigate(`${url}`);
   };
   return (
-    <div className="anime-container" key={id} onClick={onNavigationHandler}>
-      <div
-        className="background-image"
-        style={{ backgroundImage: `url(${coverImage.large})` }}
-      ></div>
-      <div className="anime-body-container">
-        <h2>{title.romaji}</h2>
-      </div>
-    </div>
+    <AnimeContainer key={id} onClick={onNavigationHandler}>
+      <BackgroundImage
+        style={{ backgroundImage: `url(${coverImage})` }}
+      ></BackgroundImage>
+      <AnimeBodyContainer>
+        <h2>{title}</h2>
+      </AnimeBodyContainer>
+    </AnimeContainer>
   );
 };
 

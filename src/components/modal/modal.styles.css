@@ -15,20 +15,6 @@
 
 .modal-content {
   width: 300px;
-  background-color: black;
+  background-color: #052d4a;
   padding: 20px;
-}
-
-.modal-header, .modal-footer {
-  padding: 10px;
-}
-
-.modal-title {
-  margin: 0;
-}
-
-.modal-body {
-  padding: 10px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
 }

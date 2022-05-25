@@ -10,6 +10,9 @@ export const AnimeDetailWrapper = styled.div`
   justify-content: space-between;
   background-color: #052d4a;
   margin: 20px 0;
+  @media (max-width: 420px) {
+    flex-direction: column;
+  }
 `;
 
 export const AnimeDetailImage = styled.div`
@@ -34,6 +37,12 @@ export const FlexRow = styled.div`
   justify-content: space-between;
   & > div {
     width: 30%;
+    @media (max-width: 420px) {
+      width: 100%;
+    }
+  }
+   @media (max-width: 420px) {
+    flex-direction: column;
   }
 `;
 

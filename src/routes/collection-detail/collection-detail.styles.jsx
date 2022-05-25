@@ -12,19 +12,31 @@ export const CollectionDetailWrapper = styled.div`
   margin: 20px 0;
   align-items: center;
   justify-content: space-between;
-  `
 
-  ;
+  @media (max-width: 420px) {
+    flex-direction: column;
+    & > div {
+      width: 100%;
+    }
+  }
+`;
 
 export const CollectionDetailImage = styled.div`
-  &> img {
+  & > img {
     width: 50px;
+    @media (max-width: 420px) {
+      width: 100%;
+    }
   }
-`
+`;
 
 export const CollectionDetailDiv = styled.div`
-  text-align: right;
-`
+  width: 20%;
+  @media (max-width: 420px) {
+      width: 100%;
+    }
+`;
+
 
 /* .collection-detail-container .collection-detail-wrapper{
   padding: 20px;

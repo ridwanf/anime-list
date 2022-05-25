@@ -14,6 +14,7 @@ const AnimeDetail = ({ detail, loading }) => {
   const setShowModal = (isOpen) => {
     setIsModalOpen(isOpen)
   };
+  
   const formatDate = (date) => {
     return `${date.day}-${date.month}-${date.year}`;
   };

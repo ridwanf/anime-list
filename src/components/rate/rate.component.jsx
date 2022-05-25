@@ -1,5 +1,6 @@
 import React from "react";
 import InfoField from "../info-field/info-field.component";
+import { StarContainer } from "./rate.styles";
 
 const Rate = ({ score }) => {
   const rate = () => {
@@ -7,10 +8,10 @@ const Rate = ({ score }) => {
     const star = [];
     for (let index = 0; index < result; index++) {
       star.push(
-        <span className="star" key={index}>
+        <StarContainer className="star" key={index}>
           {" "}
           &#9734;
-        </span>
+        </StarContainer>
       );
     }
     return star;

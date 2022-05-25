@@ -10,13 +10,21 @@ export const ButtonContainer = styled.button`
   background-color: #031a2a;
   color: white;
   text-transform: uppercase;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-weight: bolder;
   border: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
   margin: 10px;
+  @media (max-width: 420px) {
+    height: 40px;
+    letter-spacing: 0.5px;
+    line-height: 40px;
+    padding: 0 5px 0 5px;
+    font-size: 13px;
+    margin: 5px;
+  }
 
   &:hover {
     background-color: white;
@@ -35,4 +43,4 @@ export const ButtonContainer = styled.button`
       border: none;
     }
   }
-`
+`;

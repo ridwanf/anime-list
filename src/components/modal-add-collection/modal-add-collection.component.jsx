@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CollectionContext } from "../../contexts/collection.context";
 import { ModalContext } from "../../contexts/modal.context";
 import Btn from "../Btn/button.component";
@@ -7,10 +7,9 @@ import "./modal-add-collection.styles.jsx";
 import { FormInput, ModalFooter, ModalTitle } from "./modal-add-collection.styles.jsx";
 
 const ModalCollection = ({ show, onClose }) => {
-  const { addItemToCollection } = useContext(CollectionContext);
+  const { addItemToCollection, isError, setIsError } = useContext(CollectionContext);
   const { setIsModalCollectionOpen } = useContext(ModalContext);
   const [collectionName, setCollectionName] = useState("");
-  const [isError, setIsError] = useState();
 
   const addNewCollection = (e) => {
     if(collectionName === '') {
@@ -20,13 +19,21 @@ const ModalCollection = ({ show, onClose }) => {
       })
       return
     }
-    addItemToCollection({ name: collectionName });
-    
-    if (isError === undefined) {
+    addItemToCollection(collectionName);
+    if (isError.error === undefined) {
       setCollectionName("");
       setIsModalCollectionOpen(false);
     }
   };
+
+  useEffect(() => {
+    if(!show) {
+      setIsError({})
+      setCollectionName("");
+    }
+  }, [show, setIsError])
+
+  
   const handleChange = (event) => {
     const { value } = event.target;
     setCollectionName(value);

@@ -11,7 +11,7 @@ const Navigation = () => {
     <Fragment>
       <NavigationContainer>
         <LogoContainer to="/">
-          <img src="/assets/onion.svg" alt="icon" className="logo" />
+          <img src="/assets/onion.svg" alt="icon" className="logo"/>
         </LogoContainer>
         <TitleContainer>
         <Link to="/">Anime List</Link>

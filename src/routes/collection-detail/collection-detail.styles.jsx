@@ -36,27 +36,3 @@ export const CollectionDetailDiv = styled.div`
       width: 100%;
     }
 `;
-
-
-/* .collection-detail-container .collection-detail-wrapper{
-  padding: 20px;
-  color: #ffff;
-  display: flex;
-  justify-content: space-between;
-  background-color: #052d4a;
-  margin: 20px 0;
-  align-items: center;
-}
-
-.collection-detail-image img{
-  width: 50px;
-}
-
-.collection-detail-container{
-  padding: 60px 10px 15px;
-}
-
-.collection-detail{
-  width: 15%;
-  text-align: right;
-} */

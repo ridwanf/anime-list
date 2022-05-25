@@ -16,7 +16,6 @@ import {
   CollectionDetailContainer,
   CollectionDetailWrapper,
   CollectionDetailImage,
-  RateDiv,
 } from "./collection-detail.styles.jsx";
 const CollectionDetail = () => {
   const { name } = useParams();
@@ -56,7 +55,7 @@ const CollectionDetail = () => {
         collectionDetail.animeList.map((detail) => (
           <CollectionDetailWrapper key={detail.id}>
             <CollectionDetailImage>
-              <img src={detail.coverImage.large} alt="detail-img" />
+              <img src={detail.coverImage.large} alt="detail-img"  />
             </CollectionDetailImage>
             <CollectionDetailDiv>{detail.title.romaji}</CollectionDetailDiv>
             <Rate score={detail.averageScore} />

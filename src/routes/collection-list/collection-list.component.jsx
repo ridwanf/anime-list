@@ -114,7 +114,7 @@ const CollectionList = () => {
           return (
             <List key={name}>
               <CollectionItem onClick={() => goToCollectionDetail(name)}>
-                <img src={coverImage} alt="detail-img" />
+                <img src={coverImage} alt="detail-img"/>
               </CollectionItem>
               <CollectionItem>
                 <span>{title}</span>

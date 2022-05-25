@@ -1,15 +1,16 @@
-import "./modal.styles.css";
+import "./modal.styles.jsx";
+import { ModalContainer, ModalContent } from "./modal.styles.jsx";
 
 const Modal = ({children,  show ,onClose}) => {
   if (!show) {
     return null;
   } else {
     return (
-      <div className="modal" onClick={onClose}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <ModalContainer onClick={onClose}>
+        <ModalContent onClick={(e) => e.stopPropagation()}>
           {children}
-        </div>
-      </div>
+        </ModalContent>
+      </ModalContainer>
     );
   }
 };

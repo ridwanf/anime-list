@@ -60,11 +60,13 @@ const AnimeList = () => {
       const { Page } = data;
       const { media } = Page;
       const { pageInfo } = Page;
+      console.log(loading);
+      console.log(error);
       setHasNext(pageInfo.hasNextPage);
       setLastPage(pageInfo.lastPage)
       setAnimeList(media);
     }
-  }, [data]);
+  }, [data, error, loading]);
   return (
     <Fragment>
       <AnimeListContainer>

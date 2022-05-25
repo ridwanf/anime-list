@@ -1,12 +1,13 @@
 import React from "react";
-import './info-field.styles.css';
+import './info-field.styles.jsx';
+import { InfoFieldContainer } from "./info-field.styles.jsx";
 
 const InfoField = ({label, value}) => {
   return (
-    <div className="info-field">
+    <InfoFieldContainer>
       <span>{label}: </span>
       <span>{value}</span>
-    </div>
+      </InfoFieldContainer>
   );
 };
 

@@ -10,7 +10,11 @@ export const CollectionDetailWrapper = styled.div`
   display: flex;
   background-color: #052d4a;
   margin: 20px 0;
-  align-items: center;`;
+  align-items: center;
+  justify-content: space-between;
+  `
+
+  ;
 
 export const CollectionDetailImage = styled.div`
   &> img {
@@ -18,8 +22,7 @@ export const CollectionDetailImage = styled.div`
   }
 `
 
-export const CollectionDetail = styled.div`
-  width: 15%;
+export const CollectionDetailDiv = styled.div`
   text-align: right;
 `
 

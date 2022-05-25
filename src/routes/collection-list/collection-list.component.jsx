@@ -74,7 +74,7 @@ const CollectionList = () => {
             ? collection.animeList[0].coverImage.large
             : DEFAULT_COVER;
 
-          const url = `/${collection.name}`;
+          // const url = `/${collection.name}`;
 
           return (
             <List key={name}>

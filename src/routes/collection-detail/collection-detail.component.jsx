@@ -6,7 +6,7 @@ import InfoField from "../../components/info-field/info-field.component";
 import Rate from "../../components/rate/rate.component";
 import { CollectionContext } from "../../contexts/collection.context";
 import "./collection-detail.styles.jsx";
-import { CollectionDetailContainer, CollectionDetailWrapper, CollectionDetailImage } from "./collection-detail.styles.jsx";
+import { CollectionDetailDiv, CollectionDetailContainer, CollectionDetailWrapper, CollectionDetailImage } from "./collection-detail.styles.jsx";
 const CollectionDetail = () => {
   const { name } = useParams();
 
@@ -35,12 +35,12 @@ const CollectionDetail = () => {
             <CollectionDetailImage>
               <img src={detail.coverImage.large} alt="detail-img" />
             </CollectionDetailImage>
-            <CollectionDetail>
+            <CollectionDetailDiv>
               <span>{detail.title.romaji}</span>
-            </CollectionDetail>
-            <CollectionDetail>
+            </CollectionDetailDiv>
+            <CollectionDetailDiv>
               <Rate score={detail.averageScore} />
-            </CollectionDetail>
+            </CollectionDetailDiv>
 
             <InfoField label="Episode" value={detail.episodes}  className="collection-detail"/>
             <InfoField label="Genres" value={detail.genres.join(", ")} className="collection-detail"/>

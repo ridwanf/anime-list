@@ -50,9 +50,10 @@ const Detail = () => {
   useEffect(() => {
     if (data) {
       const { Media } = data;
+      console.log(error);
       setAnimeDetail(Media);
     }
-  }, [data]);
+  }, [data, loading, error]);
 
   return (
     <Fragment>

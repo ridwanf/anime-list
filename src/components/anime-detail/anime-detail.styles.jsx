@@ -32,6 +32,9 @@ export const FlexRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  & > div {
+    width: 30%;
+  }
 `;
 
 export const DetailFooter = styled.div`

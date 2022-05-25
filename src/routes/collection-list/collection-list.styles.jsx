@@ -5,8 +5,9 @@ export const CollectionContainer = styled.div`
 `;
 
 export const CollectionItem = styled.div`
-  width: 40%;
+  display: flex;
   img {
+    margin-right: 10px;
     width: 50px;
     &:hover {
       cursor: pointer;
@@ -14,7 +15,7 @@ export const CollectionItem = styled.div`
   }
 `;
 
-export const CollectionItemLeft = styled.div`
+export const CollectionItemRight = styled.div`
   right: 20px;
   position: absolute;
   display: flex;

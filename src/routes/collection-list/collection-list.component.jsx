@@ -2,13 +2,13 @@ import { useContext, useEffect, useState } from "react";
 
 import { CollectionContext } from "../../contexts/collection.context";
 import Modal from "../../components/modal/modal.component";
-import { DEFAULT_COVER } from "../../uilts/const.util";
+import { DEFAULT_BANNER, DEFAULT_COVER } from "../../uilts/const.util";
 import Banner from "../../components/banner/banner.component";
 import {
   AddCollectionContainer,
   CollectionContainer,
   CollectionItem,
-  CollectionItemLeft,
+  CollectionItemRight,
   ModalBody,
   ModalFooter,
 } from "./collection-list.styles";
@@ -87,7 +87,7 @@ const CollectionList = () => {
     collections[0].animeList &&
     collections[0].animeList[0]
       ? collections[0].animeList[0].bannerImage
-      : "assets/Default-Banner.png";
+      : DEFAULT_BANNER;
 
   return (
     <CollectionContainer>
@@ -119,10 +119,10 @@ const CollectionList = () => {
               <CollectionItem>
                 <span>{title}</span>
               </CollectionItem>
-              <CollectionItemLeft>
+              <CollectionItemRight>
                 <Btn onClick={() => btnEditClick(collection)}>Edit</Btn>
                 <Btn onClick={() => deleteAction(collection)}>Delete</Btn>
-              </CollectionItemLeft>
+              </CollectionItemRight>
             </List>
           );
         })}

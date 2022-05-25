@@ -7,6 +7,7 @@ import ModalAddItem from "../modal-add-item/modal-add-item.component";
 import Rate from "../rate/rate.component";
 import { AnimeDetailContainer, AnimeDetailDescription, AnimeDetailImage, AnimeDetailWrapper, DetailFooter, DetailInfo, FlexRow } from "./anime-detail.styles.jsx";
 import Btn from "../Btn/button.component";
+import { DEFAULT_BANNER } from "../../uilts/const.util";
 
 const AnimeDetail = ({ detail, loading }) => {
   const { isModalOpen, setIsModalOpen } = useContext(ModalContext);
@@ -21,7 +22,7 @@ const AnimeDetail = ({ detail, loading }) => {
   if (Object.entries(detail).length > 0 && loading === false) {
     return (
       <AnimeDetailContainer>
-        <Banner urlImage={detail.bannerImage ? detail.bannerImage : 'assets/Default-Banner.png'} />
+        <Banner urlImage={detail.bannerImage ? detail.bannerImage : DEFAULT_BANNER} />
         <AnimeDetailWrapper>
           <AnimeDetailImage>
             <img src={detail.coverImage.large} alt="detail-img" />
